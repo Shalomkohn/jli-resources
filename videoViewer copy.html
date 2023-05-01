@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>JLI Resources</title>
+  </head>
+  <body>
+    <div class="next-and-previous-arrows">
+      <button class="back-button">
+        <img src="icons/arrowleft.svg" alt="" />
+      </button>
+      <button class="back-button">
+        <img src="icons/arrowright.svg" alt="" />
+      </button>
+    </div>
+    <header class="media-header viewer-header">
+      <div class="header-buttons">
+        <button class="back-button">
+          <img src="icons/leftarrow.svg" alt="" />
+        </button>
+        <button class="download-button">
+          <img src="icons/download.png" alt="" />
+        </button>
+      </div>
+      <div class="file-name">Spring beyond right</div>
+      <div class="note">
+        Please keep in mind: Download chart to follow along with video
+      </div>
+    </header>
+    <main class="viewer-main media-viewer-main">
+      <div class="viewer-container paused" data-sound="on">
+        <video class="media-element" poster="icons/playposter.jpg">
+          <source src="test.mp4" type="video/mp4" />
+        </video>
+        <div class="media-controlls-container">
+          <div class="timeline-container">
+            <div class="timeline">
+              <div class="thumb-indicator"></div>
+            </div>
+          </div>
+          <div class="controls">
+            <div class="left-side">
+              <div class="duration-container">
+                <span class="current-time">00:00</span>
+                /
+                <span class="total-time"></span>
+              </div>
+              <button class="restart-button">
+                <img src="icons/restart.svg" alt="" />
+              </button>
+              <button class="playback-speed-button">1x</button>
+            </div>
+            <div class="middle">
+              <button class="backward-button">
+                <img src="icons/backwards.svg" alt="" />
+              </button>
+              <button class="play-pause-btn">
+                <svg
+                  class="play-icon"
+                  width="18"
+                  height="21"
+                  viewBox="0 0 18 21"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1.75 2.27276L16 10.5L1.75 18.7272L1.75 2.27276Z"
+                    stroke="white"
+                    stroke-width="2"
+                  />
+                </svg>
+                <svg
+                  class="pause-icon"
+                  width="17"
+                  height="20"
+                  viewBox="0 0 17 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <line
+                    x1="16"
+                    y1="20"
+                    x2="16"
+                    stroke="white"
+                    stroke-width="2"
+                  />
+                  <line x1="1" y1="20" x2="1" stroke="white" stroke-width="2" />
+                </svg>
+              </button>
+              <button class="forward-button">
+                <img src="icons/forwards.svg" alt="" />
+              </button>
+            </div>
+
+            <div class="right-side">
+              <div class="volume-container">
+                <input
+                  class="volume-slider"
+                  type="range"
+                  min="0"
+                  max="1"
+                  step="any"
+                  value="1"
+                />
+                <button class="volume-button">
+                  <img class="volume-icon" src="icons/volume.svg" alt="" />
+                  <img class="mute-icon" src="icons/mute.svg" alt="" />
+                </button>
+              </div>
+              <button class="full-screen-btn">
+                <img
+                  class="full-screen-icon"
+                  src="icons/fullscreen.svg"
+                  alt="fullscreen"
+                />
+                <img
+                  class="minimize-icon"
+                  src="icons/minimize.svg"
+                  alt="minimize"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="media.js"></script>
+  </body>
+</html>

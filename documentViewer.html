@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>JLI Resources</title>
+  </head>
+  <body>
+    <div class="testing-navigation" style="text-decoration: underline">
+      <a style="margin-left: 20px" href="lists.html">Lists</a>
+      <a style="margin-left: 20px" href="videoViewer.html">Video Viewer</a>
+      <a style="margin-left: 20px" href="audioViewer.html">Audio Viewer</a>
+      <a style="margin-left: 20px" href="documentViewer.html"
+        >Document viewer</a
+      >
+      <a style="margin-left: 20px" href="emptyFolder.html">Folder empty page</a>
+      <a style="margin-left: 20px" href="404.html">404 Page</a>
+    </div>
+    <div class="next-and-previous-arrows">
+      <button class="back-button">
+        <img src="icons/fullarrowleftblack.svg" alt="" />
+      </button>
+      <button class="back-button">
+        <img src="icons/fullarrowrightblack.svg" alt="" />
+      </button>
+    </div>
+    <header class="document-header viewer-header">
+      <div class="header-buttons">
+        <button class="back-button">
+          <img src="icons/arrowleftblack.svg" alt="" />
+        </button>
+        <div class="actions">
+          <button class="download-button">
+            <img src="icons/download-icon.svg" alt="" />
+          </button>
+          <button class="print-button">
+            <img src="icons/print.svg" alt="" />
+          </button>
+        </div>
+      </div>
+      <div class="file-name">MFS Sign Up Sheet.docx Download</div>
+      <div class="note-text">
+        Please keep in mind: As of now, we only accept checks!
+      </div>
+    </header>
+    <main class="viewer-main document-viewer-main">
+      <div class="viewer-container document-viewer-container">
+        <button class="full-screen-btn">
+          <img
+            class="full-screen-icon"
+            src="icons/fullscreenblack.svg"
+            alt="fullscreen"
+          />
+          <img
+            class="minimize-icon"
+            src="icons/minimizeblack.svg"
+            alt="minimize"
+          />
+        </button>
+        <iframe
+          src="https://drive.google.com/viewerng/viewer?embedded=true&url=https%3A%2F%2Fs3.amazonaws.com%2Fresources.myjli.com%2Fflagship%2F82-all%2F1.%2520FALL%253A%2520Outsmarting%2520Antisemitism%2FOA%2520Lesson%25201%2FFS%2520-%2520OSA%2520-%2520TM%2520L1%2520Outline.pdf%3FX-Amz-Content-Sha256%3DUNSIGNED-PAYLOAD%26X-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3DAKIARBDOQ5J2MCSQJBPB%252F20230501%252Fus-east-1%252Fs3%252Faws4_request%26X-Amz-Date%3D20230501T155146Z%26X-Amz-SignedHeaders%3Dhost%26X-Amz-Expires%3D518400%26X-Amz-Signature%3Dd0dd7c1a8ca96676b4ae9658ae93222d82d12a5b2d587ffa7d00c961ba1688b9"
+          height=""
+          width=""
+          title="MFS Sign Up Sheet.docx"
+        >
+        </iframe>
+      </div>
+    </main>
+    <script src="media.js"></script>
+  </body>
+</html>
