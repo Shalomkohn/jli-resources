@@ -301,7 +301,8 @@ nav {
             border-radius: 50%;
         }
 
-        .list-item .actions .note-icon:hover + .note-text{
+        .list-item .actions .note-icon:hover + .note-text,
+        .list-item .actions .note-icon:focus + .note-text{
             display: block;
         }
 
@@ -916,7 +917,7 @@ nav {
 
 .document-viewer-container {
     padding: 0 0 100px;
-    max-width: 80%;
+    max-width: 60%;
     width: 1000px;
     position: relative;
     display: flex;
