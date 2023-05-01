@@ -221,11 +221,12 @@ function toggleMute() {
 // Full Screen Mode
 
 if(fullScreenBtn) {
-    fullScreenBtn.addEventListener("click", toggleFullScreen)
+    fullScreenBtn.addEventListener("click", toggleFullScreen);
+    fullScreenBtn.addEventListener("touchstart", toggleFullScreen);
+    fullScreenBtn.addEventListener("touchend", toggleFullScreen);
 }
 
 function toggleFullScreen() {
-    console.log('helo');
     const fullscreenElement = document.webkitFullscreenElement || document.fullscreenElement;
 
     if (fullscreenElement == null) {
