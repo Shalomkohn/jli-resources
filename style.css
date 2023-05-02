@@ -377,6 +377,7 @@ nav {
     display: flex;
     justify-content: space-between;
     padding: 0 3%;
+    z-index: 100;
 }
 
     .next-and-previous-arrows button {
@@ -453,13 +454,10 @@ nav {
 
 /* Media (video / audio) Page */
 
-
-
-
 .viewer-main {
     background-color: var(--black);
     height: 100%;
-    min-height: 100vh;
+    min-height: 95vh;
     width: 100vw;
     background-color: #f2f2f2;
 }
@@ -480,6 +478,7 @@ nav {
 
 .viewer-container {
     padding-top: 32px;
+    max-width: 80%;
     width: 1000px;
     position: relative;
     display: flex;
@@ -742,11 +741,13 @@ nav {
             }
 
 
-            .viewer-container.full-screen .full-screen-btn .full-screen-icon{
+            .viewer-container.full-screen .full-screen-btn .full-screen-icon,
+            .document-header.full-screen .full-screen-btn .full-screen-icon{
                 display: none;
             }
 
-            .viewer-container:not(.full-screen) .full-screen-btn .minimize-icon{
+            .viewer-container:not(.full-screen) .full-screen-btn .minimize-icon,
+            .document-header:not(.full-screen) .full-screen-btn .minimize-icon{
                 display: none;
             }
 
@@ -760,6 +761,27 @@ nav {
         max-height: 100vh;
     }
 
+@media (max-width: 1000px) {
+
+    .document-header .header-buttons .actions .full-screen-btn-wrapper {
+        display: none;
+    }
+
+    .document-viewer-container,
+    .video-viewer-container {
+        padding: 0 !important;
+        max-width: initial;
+        width: 100%;
+    }
+
+    .document-viewer-container .full-screen-btn {
+        display: none !important;
+    }
+
+    .video-viewer-container .media-controlls-container {
+        display: none;
+    }
+}
 
 @media (max-width: 800px) {
 
@@ -781,7 +803,6 @@ nav {
         background-color: var(--white);
         display: block;
         min-height: initial;
-        height: initial;
     }
     
     .viewer-container {
@@ -892,15 +913,20 @@ nav {
 
 /* document viewer */
 
+.document-header .header-buttons .actions .full-screen-btn-wrapper {
+    padding-right: 20px;
+    border-right: 1px solid #ccc;
+}
+
 .document-viewer-main {
     background-color: #f2f2f2;
 }
 
-.document-viewer-container .full-screen-btn{
+.document-header.full-screen + .document-viewer-main .document-viewer-container .full-screen-btn{
     position: absolute;
     top: 0;
     right: 0;
-    margin: 50px 0;
+    margin: 60px;
     display: flex;
     justify-content: center;
     z-index: 100;
@@ -914,21 +940,15 @@ nav {
 }
 
 .document-viewer-container {
-    padding: 120px 0;
-    max-width: 80%;
-    width: 1000px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-inline: auto;
+    padding: 0;
     background-color: #f2f2f2;
+
 }
 
 .document-viewer-container iframe {
-    width: 100%;
-    min-height: 95vh;
+    max-width: initial;
+    width: 100vw;
+    height: 100vh;
 }
 
 .document-viewer-container.full-screen iframe {
@@ -944,19 +964,11 @@ nav {
 }
 
 @media (max-width: 500px) {
-    .document-viewer-container {
-        max-width: initial;
-        width: 100%;
-    }
-
-    .document-viewer-container .full-screen-btn {
-        /* display: none; */
-    }
 
     .document-viewer-container iframe {
         min-height: initial;
         height: initial;
-        aspect-ratio: 9 / 11;
+        aspect-ratio: 9 / 12;
     }
 }
 

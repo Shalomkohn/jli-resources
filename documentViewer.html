@@ -36,6 +36,20 @@
           <img src="icons/arrowleftblack.svg" alt="" />
         </button>
         <div class="actions">
+          <div class="full-screen-btn-wrapper">
+            <button class="full-screen-btn">
+              <img
+                class="full-screen-icon"
+                src="icons/fullscreenblack.svg"
+                alt="fullscreen"
+              />
+              <img
+                class="minimize-icon"
+                src="icons/minimizeblack.svg"
+                alt="minimize"
+              />
+            </button>
+          </div>
           <button class="download-button">
             <img src="icons/download-icon.svg" alt="" />
           </button>
@@ -51,12 +65,7 @@
     </header>
     <main class="viewer-main document-viewer-main">
       <div class="viewer-container document-viewer-container">
-        <button class="full-screen-btn">
-          <img
-            class="full-screen-icon"
-            src="icons/fullscreen.svg"
-            alt="fullscreen"
-          />
+        <button class="full-screen-btn document-minimize-btn">
           <img class="minimize-icon" src="icons/minimize.svg" alt="minimize" />
         </button>
         <iframe

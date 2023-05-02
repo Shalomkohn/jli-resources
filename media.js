@@ -1,6 +1,7 @@
 const timelineContainer = document.querySelector(".timeline-container")
 const playPauseBtn = document.querySelector(".play-pause-btn")
 const fullScreenBtn = document.querySelector(".full-screen-btn")
+const documentMinimizeBtn = document.querySelector(".document-minimize-btn")
 const currentTimeElm = document.querySelector(".current-time")
 const totalTimeElm = document.querySelector(".total-time")
 const restartBtn = document.querySelector(".restart-button")
@@ -11,13 +12,18 @@ const volumeBtn = document.querySelector(".volume-button")
 const volumeSlider = document.querySelector(".volume-slider")
 const viewerMainSection = document.querySelector(".viewer-main")
 const viewerContainer = document.querySelector(".viewer-container")
+const documentHeader = document.querySelector(".document-header")
 const media = document.querySelector(".media-element")
+const video = document.querySelector(".video-element")
 
 
 // Timeline
 
-timelineContainer?.addEventListener("mousemove", handleTimelineUpdate)
-timelineContainer?.addEventListener("mousedown", toggleScrubbing)
+if(timelineContainer){
+    timelineContainer.addEventListener("mousemove", handleTimelineUpdate)
+    timelineContainer.addEventListener("mousedown", toggleScrubbing)
+}
+
 document.addEventListener("mouseup", e => {
     if (isScrubbing) toggleScrubbing(e)
 })
@@ -224,10 +230,13 @@ function toggleMute() {
 
 // Full Screen Mode
 
+if(documentMinimizeBtn) documentMinimizeBtn.addEventListener("click", () => toggleFullScreen());
+
+
 if(fullScreenBtn) {
     fullScreenBtn.addEventListener("click", () => toggleFullScreen());
-    fullScreenBtn.addEventListener("touchstart", () => toggleFullScreen());
-    fullScreenBtn.addEventListener("touchend", () => toggleFullScreen());
+    // fullScreenBtn.addEventListener("touchstart", () => toggleFullScreen());
+    // fullScreenBtn.addEventListener("touchend", () => toggleFullScreen());
 }
 
 function toggleFullScreen() {
@@ -246,10 +255,12 @@ function toggleFullScreen() {
 
 document.addEventListener("fullscreenchange", () => {
     viewerContainer.classList.toggle('full-screen', document.fullscreenElement)
+    documentHeader.classList.toggle('full-screen', document.fullscreenElement)
 })
 
 document.addEventListener("webkitfullscreenchange", () => {
     viewerContainer.classList.toggle('full-screen', document.fullscreenElement)
+    documentHeader.classList.toggle('full-screen', document.fullscreenElement)
 })
 
 // Reveal / Hide controls on full screen
@@ -269,5 +280,24 @@ function revealControls() {
 function hideControls() {
     viewerContainer.classList.remove("mouse-over")
 }
+
+// Reveal controls attribute on video on small screens 
+function getClientWidth() {
+    let scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    let clientWidth = window.innerWidth + scrollbarWidth;
+    return clientWidth
+}
+
+function addControlsIfSmallScreen() {
+    if (getClientWidth() < 1001) {
+      video.setAttribute("controls", "");
+    } else {
+      video.removeAttribute("controls");
+    }
+}
+  
+window.addEventListener("load", addControlsIfSmallScreen);
+window.addEventListener("resize", addControlsIfSmallScreen);
+
 
 
