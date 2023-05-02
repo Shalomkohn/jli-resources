@@ -61,8 +61,12 @@ function handleTimelineUpdate(e) {
 }
 
 // Play / Pause
-playPauseBtn?.addEventListener("click", () => togglePlay())
-media?.addEventListener("click", () => togglePlay())
+if(playPauseBtn) {
+    playPauseBtn.addEventListener("click", () => togglePlay())
+}
+if(media) {
+    media.addEventListener("click", () => togglePlay())
+}
 
 document.addEventListener("keydown", e => {
     const activeElement = document.activeElement.tagName.toLowerCase()
@@ -221,9 +225,9 @@ function toggleMute() {
 // Full Screen Mode
 
 if(fullScreenBtn) {
-    fullScreenBtn.addEventListener("click", toggleFullScreen);
-    fullScreenBtn.addEventListener("touchstart", toggleFullScreen);
-    fullScreenBtn.addEventListener("touchend", toggleFullScreen);
+    fullScreenBtn.addEventListener("click", () => toggleFullScreen());
+    fullScreenBtn.addEventListener("touchstart", () => toggleFullScreen());
+    fullScreenBtn.addEventListener("touchend", () => toggleFullScreen());
 }
 
 function toggleFullScreen() {

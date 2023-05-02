@@ -420,11 +420,6 @@ nav {
         gap: 25px;
     }
 
-    .viewer-header.document-header .header-buttons .actions .full-screen-btn {
-        padding-right: 25px;
-        border-right: 1px solid #E5E5E5;
-    }
-
     button {
         background: none;
         border: none;
@@ -639,7 +634,7 @@ nav {
                 color: #000;
             }
 
-            .media-viewer-main .viewer-container .controls .left-side .playback-speed-button{
+            .viewer-container .controls .left-side .playback-speed-button{
                 color: #fff;
                 padding-left: 20px;
             }
@@ -842,7 +837,7 @@ nav {
                     justify-content: space-between;
                 }
     
-                .viewer-container .controls .left-side .duration-container {
+                .media-viewer-main .viewer-container .controls .left-side .duration-container {
                     color: #000;
                     gap: 4px;
                     font-size: 10px;
@@ -902,22 +897,25 @@ nav {
 }
 
 .document-viewer-container .full-screen-btn{
+    position: absolute;
     top: 0;
     right: 0;
-    padding: 50px 0;
-    width: 100%;
+    margin: 50px 0;
     display: flex;
-    justify-content: end;
+    justify-content: center;
     z-index: 100;
+    width: 50px;
+    height: 40px;
+    background-color: #555;
 }
 
 .document-viewer-container.full-screen .full-screen-btn {
-    padding-right: 100px;
+    right: 100px;
 }
 
 .document-viewer-container {
-    padding: 0 0 100px;
-    max-width: 60%;
+    padding: 120px 0;
+    max-width: 80%;
     width: 1000px;
     position: relative;
     display: flex;
@@ -944,6 +942,25 @@ nav {
     height: 100vh;
     border: none;
 }
+
+@media (max-width: 500px) {
+    .document-viewer-container {
+        max-width: initial;
+        width: 100%;
+    }
+
+    .document-viewer-container .full-screen-btn {
+        /* display: none; */
+    }
+
+    .document-viewer-container iframe {
+        min-height: initial;
+        height: initial;
+        aspect-ratio: 9 / 11;
+    }
+}
+
+/* Error pages */
 
 .error-page-main {
     width: 100vw;
