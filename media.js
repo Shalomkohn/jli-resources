@@ -16,9 +16,8 @@ const documentHeader = document.querySelector(".document-header")
 const media = document.querySelector(".media-element")
 const video = document.querySelector(".video-element")
 
-
 // Timeline
-
+console.log(!isSmallScreen());
 if(timelineContainer){
     timelineContainer.addEventListener("mousemove", handleTimelineUpdate)
     timelineContainer.addEventListener("mousedown", toggleScrubbing)
@@ -67,12 +66,9 @@ function handleTimelineUpdate(e) {
 }
 
 // Play / Pause
-if(playPauseBtn) {
-    playPauseBtn.addEventListener("click", () => togglePlay())
-}
-if(media) {
-    media.addEventListener("click", () => togglePlay())
-}
+if(playPauseBtn && !isSmallScreen()) playPauseBtn.addEventListener("click", () => togglePlay())
+
+if(media && playPauseBtn && !isSmallScreen()) media.addEventListener("click", () => togglePlay())
 
 document.addEventListener("keydown", e => {
     const activeElement = document.activeElement.tagName.toLowerCase()
@@ -83,24 +79,24 @@ document.addEventListener("keydown", e => {
         case " ":
             if( activeElement === 'button' || !media) return
         case "k":
-            if (!media) return
+            if (!media || isSmallScreen()) return
             togglePlay()
             break
         case "f":
             toggleFullScreen()
             break
         case "m":
-            if (!media) return
+            if (!media || isSmallScreen()) return
             toggleMute()
             break
         case "arrowleft":
         case "j":
-            if (!media) return
+            if (!media || isSmallScreen()) return
             skip(-10)
             break
         case "arrowright":
         case "l":
-            if (!media) return
+            if (!media || isSmallScreen()) return
             skip(10)
             break
     }
@@ -111,7 +107,8 @@ function togglePlay() {
     media.paused ? media.play() : media.pause()
 }
 
-if (media) {
+if (media && !isSmallScreen()) {
+
     media.addEventListener("play", () => {
         viewerContainer.classList.remove("paused")
     })
@@ -125,7 +122,7 @@ if (media) {
 // Skip / Rewind
 
 
-if (backwardBtn && forwardBtn) {
+if (backwardBtn && forwardBtn && !isSmallScreen()) {
     backwardBtn.addEventListener("click", () => {
         skip(-10)
     })
@@ -136,9 +133,7 @@ if (backwardBtn && forwardBtn) {
 
 // Restart
 
-if ( restartBtn && media) {
-    restartBtn.addEventListener("click", restart)
-}
+if ( restartBtn && media && !isSmallScreen()) restartBtn.addEventListener("click", restart)
 
 function restart() {
     media.currentTime = 0;
@@ -146,9 +141,8 @@ function restart() {
 
 // Playback speed 
 
-if (playbackSpeedBtn && media) {
-    playbackSpeedBtn.addEventListener("click", changePlaybackSpeed)
-}
+if (playbackSpeedBtn && media  && !isSmallScreen()) playbackSpeedBtn.addEventListener("click", changePlaybackSpeed)
+
 
 function changePlaybackSpeed() {
     let newPlaybackRate = media.playbackRate + .25
@@ -159,13 +153,13 @@ function changePlaybackSpeed() {
 
 // Duration
 
-if (media && totalTimeElm) {
+if (media && totalTimeElm  && !isSmallScreen()) {
     media.addEventListener("loadeddata", () => {
         totalTimeElm.textContent = formatDuration(media.duration)
     })
 }
 
-if (media && currentTimeElm && timelineContainer) {
+if (media && currentTimeElm && timelineContainer  && !isSmallScreen()) {
 
     media.addEventListener("timeupdate", () => {
         currentTimeElm.textContent = formatDuration(media.currentTime)
@@ -195,14 +189,14 @@ function skip(duration) {
 
 // Volume 
 
-if ( volumeSlider && media) {
+if ( volumeSlider && media && !isSmallScreen()) {
     volumeSlider.addEventListener("input", e => {
         media.volume = e.target.value
         media.muted = e.target.value === 0
     })
 }
 
-if (media && volumeSlider) {
+if (media && volumeSlider && !isSmallScreen()) {
 
     media.addEventListener("volumechange", () => {
         volumeSlider.value = media.volume;
@@ -218,9 +212,7 @@ if (media && volumeSlider) {
     })
 }
 
-if (volumeBtn && media) {
-    volumeBtn.addEventListener("click", toggleMute)
-}
+if (volumeBtn && media && !isSmallScreen()) volumeBtn.addEventListener("click", toggleMute)
 
 function toggleMute() {
     media.muted = !media.muted
@@ -264,8 +256,10 @@ document.addEventListener("webkitfullscreenchange", () => {
 })
 
 // Reveal / Hide controls on full screen
-viewerContainer.addEventListener("mousemove", revealControls)
-viewerContainer.addEventListener("mouseleave", hideControls)
+if(viewerContainer && !isSmallScreen()) {
+    viewerContainer.addEventListener("mousemove", revealControls)
+    viewerContainer.addEventListener("mouseleave", hideControls)
+}
 
 let timeoutId
 function revealControls() {
@@ -290,10 +284,20 @@ function getClientWidth() {
 
 function addControlsIfSmallScreen() {
     if (getClientWidth() < 1001) {
-      video.setAttribute("controls", "");
+      video?.setAttribute("controls", "");
     } else {
-      video.removeAttribute("controls");
+      video?.removeAttribute("controls");
     }
+}
+
+function isSmallScreen() {
+    let smallScreen;
+    if (getClientWidth() < 1001) {
+        smallScreen = true
+      } else {
+        smallScreen = false
+      }
+    return smallScreen
 }
   
 window.addEventListener("load", addControlsIfSmallScreen);
