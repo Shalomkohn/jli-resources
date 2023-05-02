@@ -295,14 +295,15 @@ nav {
             display: none;
         }
 
-        .list-item .actions .note-icon:hover, 
-        .list-item .actions .note-icon:focus {
+        
+        .list-item .actions .note-icon:hover,
+        .list-item .actions .note-icon.show-note {
             background-color: #F2E29F;
             border-radius: 50%;
         }
 
         .list-item .actions .note-icon:hover + .note-text,
-        .list-item .actions .note-icon:focus + .note-text{
+        .list-item .actions .note-icon.show-note + .note-text{
             display: block;
         }
 

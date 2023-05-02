@@ -17,7 +17,6 @@ const media = document.querySelector(".media-element")
 const video = document.querySelector(".video-element")
 
 // Timeline
-console.log(!isSmallScreen());
 if(timelineContainer){
     timelineContainer.addEventListener("mousemove", handleTimelineUpdate)
     timelineContainer.addEventListener("mousedown", toggleScrubbing)
@@ -66,6 +65,7 @@ function handleTimelineUpdate(e) {
 }
 
 // Play / Pause
+
 if(playPauseBtn && !isSmallScreen()) playPauseBtn.addEventListener("click", () => togglePlay())
 
 if(media && playPauseBtn && !isSmallScreen()) media.addEventListener("click", () => togglePlay())
@@ -153,7 +153,12 @@ function changePlaybackSpeed() {
 
 // Duration
 
-if (media && totalTimeElm  && !isSmallScreen()) {
+if (video && totalTimeElm  && !isSmallScreen()) {
+    video.addEventListener("loadeddata", () => {
+        totalTimeElm.textContent = formatDuration(media.duration)
+    })
+}
+if (!video && media && totalTimeElm) {
     media.addEventListener("loadeddata", () => {
         totalTimeElm.textContent = formatDuration(media.duration)
     })
