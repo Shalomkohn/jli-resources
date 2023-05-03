@@ -282,18 +282,20 @@ function hideControls() {
 
 // Reveal controls attribute on video on small screens 
 function getClientWidth() {
-    let scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-    let clientWidth = window.innerWidth + scrollbarWidth;
+    var scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    var clientWidth = $(window).width() - scrollbarWidth;
     return clientWidth
 }
 
 function addControlsIfSmallScreen() {
     var scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
 
-    if (window.innerWidth - scrollbarWidth < 1001) {
+    if (getClientWidth() < 1001) {
       video?.setAttribute("controls", "");
+      viewerContainer.classList.add('small-screen')
     } else {
       video?.removeAttribute("controls");
+      viewerContainer.classList.remove('small-screen')
     }
 }
 
@@ -301,7 +303,7 @@ function isSmallScreen() {
     var scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
 
     let smallScreen;
-    if (window.innerWidth - scrollbarWidth < 1001) {
+    if (getClientWidth() < 1001) {
         smallScreen = true
       } else {
         smallScreen = false
@@ -309,7 +311,6 @@ function isSmallScreen() {
     return smallScreen
 }
 
-console.log(document.documentElement.clientWidth);
   
 window.addEventListener("load", addControlsIfSmallScreen);
 window.addEventListener("resize", addControlsIfSmallScreen);

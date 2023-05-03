@@ -818,8 +818,7 @@ nav {
         display: none;
     }
 
-    .document-viewer-container,
-    .video-viewer-container {
+    .document-viewer-container {
         padding: 0 !important;
         max-width: initial;
         width: 100%;
@@ -828,10 +827,16 @@ nav {
     .document-viewer-container .full-screen-btn {
         display: none !important;
     }
+}
 
-    .video-viewer-container .media-controlls-container {
-        display: none;
-    }
+.video-viewer-container.small-screen {
+    padding: 0 !important;
+    max-width: initial;
+    width: 100%;
+}
+
+.video-viewer-container.small-screen .media-controlls-container {
+    display: none;
 }
 
 @media (max-width: 800px) {
