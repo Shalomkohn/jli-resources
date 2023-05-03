@@ -5,7 +5,7 @@ const documentMinimizeBtn = document.querySelector(".document-minimize-btn")
 const currentTimeElm = document.querySelector(".current-time")
 const totalTimeElm = document.querySelector(".total-time")
 const restartBtn = document.querySelector(".restart-button")
-const playbackSpeedBtn = document.querySelector(".playback-speed-button")
+const playbackSpeedSelect = document.querySelector(".playback-speed-select")
 const backwardBtn = document.querySelector(".backward-button")
 const forwardBtn = document.querySelector(".forward-button")
 const volumeBtn = document.querySelector(".volume-button")
@@ -139,17 +139,13 @@ function restart() {
     media.currentTime = 0;
 }
 
-// Playback speed 
-
-if (playbackSpeedBtn && media  && !isSmallScreen()) playbackSpeedBtn.addEventListener("click", changePlaybackSpeed)
-
-
-function changePlaybackSpeed() {
-    let newPlaybackRate = media.playbackRate + .25
-    if (newPlaybackRate > 2) newPlaybackRate = 0.50
-    media.playbackRate = newPlaybackRate
-    playbackSpeedBtn.textContent = `${newPlaybackRate}x`
+// Playback speed
+if (playbackSpeedSelect && media) {
+    playbackSpeedSelect.addEventListener('change', (e) => {
+        media.playbackRate = e.target.value
+    })
 }
+
 
 // Duration
 
@@ -288,8 +284,6 @@ function getClientWidth() {
 }
 
 function addControlsIfSmallScreen() {
-    var scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-
     if (getClientWidth() < 1001) {
       video?.setAttribute("controls", "");
       viewerContainer.classList.add('small-screen')
@@ -300,7 +294,6 @@ function addControlsIfSmallScreen() {
 }
 
 function isSmallScreen() {
-    var scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
 
     let smallScreen;
     if (getClientWidth() < 1001) {

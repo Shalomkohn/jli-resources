@@ -3,7 +3,7 @@ const playPauseBtn = document.querySelector(".play-pause-btn")
 const currentTimeElm = document.querySelector(".current-time")
 const totalTimeElm = document.querySelector(".total-time")
 const restartBtn = document.querySelector(".restart-button")
-const playbackSpeedBtn = document.querySelector(".playback-speed-button")
+const playbackSpeedSelect = document.querySelector(".playback-speed-select")
 const backwardBtn = document.querySelector(".backward-button")
 const forwardBtn = document.querySelector(".forward-button")
 const volumeBtn = document.querySelector(".volume-button")
@@ -125,16 +125,11 @@ function restart() {
 }
 
 // Playback speed 
-
-playbackSpeedBtn.addEventListener("click", changePlaybackSpeed)
-
-
-function changePlaybackSpeed() {
-    let newPlaybackRate = audio.playbackRate + .25
-    if (newPlaybackRate > 2) newPlaybackRate = 0.50
-    audio.playbackRate = newPlaybackRate
-    playbackSpeedBtn.textContent = `${newPlaybackRate}x`
-}
+// if (playbackSpeedSelect && audio) {
+    playbackSpeedSelect.addEventListener('change', e => {
+        audio.playbackRate = e.target.value
+    })
+// }
 
 // Duration
 

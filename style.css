@@ -222,9 +222,15 @@ nav {
         margin: 40px 5%;
     }
 
-    .navigation {
-        font-size: 13px;
-    }
+        .navigation-and-download-flex .download .download-tooltip {
+            right: 100%;
+            width: 80px;
+            font-size: 13px;
+        }
+
+        .navigation {
+            font-size: 12px;
+        }
 }
 
 /* Listing */
@@ -680,6 +686,18 @@ nav {
                 color: #fff;
                 padding-left: 20px;
             }
+
+                .viewer-container .controls .left-side .playback-speed-button .playback-speed-select {
+                    border: none;
+                    background: none;
+                    appearance: none;
+                    cursor: pointer;
+                    font-size: 15px;
+                }
+
+                .video-viewer-container .controls .left-side .playback-speed-button .playback-speed-select {
+                    color: #fff;
+                }
 
             .audio-viewer-main .viewer-container .controls .left-side .playback-speed-button{
                 color: #000;

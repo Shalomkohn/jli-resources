@@ -66,7 +66,19 @@
               <button class="restart-button">
                 <img src="icons/restartblack.svg" alt="" />
               </button>
-              <button class="playback-speed-button">1x</button>
+              <button class="playback-speed-button">
+                <select
+                  class="playback-speed-select"
+                  id="playback-speed-select"
+                >
+                  <option value="0.5">0.5x</option>
+                  <option value="0.75">0.75x</option>
+                  <option value="1" selected>1x</option>
+                  <option value="1.25">1.25x</option>
+                  <option value="1.50">1.50x</option>
+                  <option value="2">2x</option>
+                </select>
+              </button>
             </div>
             <div class="middle">
               <button class="backward-button">

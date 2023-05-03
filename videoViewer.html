@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-
     <title>JLI Resources</title>
   </head>
   <body>
@@ -46,13 +45,14 @@
     </header>
     <main class="viewer-main media-viewer-main video-viewer-main">
       <div
-        class="viewer-container video-viewer-container paused"
+        class="viewer-container video-viewer-container small-screen paused"
         data-sound="on"
       >
         <video
           class="media-element video-element"
           poster="icons/playposter.jpg"
           playsinline
+          controls
         >
           <source
             src="https://s3.amazonaws.com/resources.myjli.com/flagship/82-all/1.%20FALL%3A%20Outsmarting%20Antisemitism/OA%20Lesson%201/OA%20Lesson%201%20Multimedia/Videos/Challenged%20Faced%20-%20Opportunity%20Embraced%20-%20Rabbi%20Shneur%20Zaklas%20Novosibirsk%20Russia.mp4?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARBDOQ5J2MCSQJBPB%2F20230501%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230501T154752Z&X-Amz-SignedHeaders=host&X-Amz-Expires=518400&X-Amz-Signature=40bd4daa215d2c2a5bad393f60546e92b1261cf8fed15119d196f126ab7365d6"
@@ -75,7 +75,19 @@
               <button class="restart-button">
                 <img src="icons/restart.svg" alt="" />
               </button>
-              <button class="playback-speed-button">1x</button>
+              <button class="playback-speed-button">
+                <select
+                  class="playback-speed-select"
+                  id="playback-speed-select"
+                >
+                  <option value="0.5">0.5x</option>
+                  <option value="0.75">0.75x</option>
+                  <option value="1" selected>1x</option>
+                  <option value="1.25">1.25x</option>
+                  <option value="1.50">1.50x</option>
+                  <option value="2">2x</option>
+                </select>
+              </button>
             </div>
             <div class="middle">
               <button class="backward-button">
@@ -153,7 +165,6 @@
         </div>
       </div>
     </main>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="video.js"></script>
   </body>
 </html>
