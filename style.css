@@ -693,6 +693,7 @@ nav {
                     appearance: none;
                     cursor: pointer;
                     font-size: 15px;
+                    color: #000;
                 }
 
                 .video-viewer-container .controls .left-side .playback-speed-button .playback-speed-select {
