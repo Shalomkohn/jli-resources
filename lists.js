@@ -8,16 +8,16 @@ if(noteIcons) {
         icon.addEventListener('touchstart', e => {
 
             e.preventDefault();
-        
-            let noteIcon = document.querySelector(`[data-note="${e.target.dataset.note}"]`)
-            noteIcon.classList.add('show-note');
+            e.target.classList.add('show-note')
+            // let noteIcon = document.querySelector(`[data-note="${e.target.dataset.note}"]`)
+            // noteIcon.classList.add('show-note');
         })
         icon.addEventListener('touchend', e => {
 
             e.preventDefault();
-
-            let noteIcon = document.querySelector(`[data-note="${e.target.dataset.note}"]`)
-            noteIcon.classList.remove('show-note');
+            e.target.classList.remove('show-note')
+            // let noteIcon = document.querySelector(`[data-note="${e.target.dataset.note}"]`)
+            // noteIcon.classList.remove('show-note');
         })
     });
 } 
