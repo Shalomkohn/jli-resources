@@ -183,6 +183,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     margin: 58px 20%;
+    gap: 8px;
 }
 
     .navigation-and-download-flex .download {

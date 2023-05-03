@@ -288,7 +288,7 @@ function getClientWidth() {
 }
 
 function addControlsIfSmallScreen() {
-    if (getClientWidth() < 1001) {
+    if (window.innerWidth < 1001) {
       video?.setAttribute("controls", "");
     } else {
       video?.removeAttribute("controls");
@@ -297,13 +297,15 @@ function addControlsIfSmallScreen() {
 
 function isSmallScreen() {
     let smallScreen;
-    if (getClientWidth() < 1001) {
+    if (window.innerWidth < 1001) {
         smallScreen = true
       } else {
         smallScreen = false
       }
     return smallScreen
 }
+
+console.log(getClientWidth());
   
 window.addEventListener("load", addControlsIfSmallScreen);
 window.addEventListener("resize", addControlsIfSmallScreen);
