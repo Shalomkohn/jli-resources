@@ -282,8 +282,8 @@ function hideControls() {
 
 // Reveal controls attribute on video on small screens 
 function getClientWidth() {
-    var scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-    var clientWidth = $(window).width() - scrollbarWidth;
+    let scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    let clientWidth = window.innerWidth + scrollbarWidth;
     return clientWidth
 }
 
