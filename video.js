@@ -288,7 +288,9 @@ function getClientWidth() {
 }
 
 function addControlsIfSmallScreen() {
-    if (document.documentElement.clientWidth < 1001) {
+    var scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+
+    if (window.innerWidth - scrollbarWidth < 1001) {
       video?.setAttribute("controls", "");
     } else {
       video?.removeAttribute("controls");
@@ -296,8 +298,10 @@ function addControlsIfSmallScreen() {
 }
 
 function isSmallScreen() {
+    var scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+
     let smallScreen;
-    if (document.documentElement.clientWidth < 1001) {
+    if (window.innerWidth - scrollbarWidth < 1001) {
         smallScreen = true
       } else {
         smallScreen = false
@@ -305,7 +309,7 @@ function isSmallScreen() {
     return smallScreen
 }
 
-console.log(document.body.scrollWidth);
+console.log(document.documentElement.clientWidth);
   
 window.addEventListener("load", addControlsIfSmallScreen);
 window.addEventListener("resize", addControlsIfSmallScreen);
